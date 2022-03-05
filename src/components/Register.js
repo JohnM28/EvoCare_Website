@@ -264,7 +264,7 @@ export default function Login() {
                       maxDate={new Date("1999/1/1")}
                       value={selectedDate}
                       onChange={handleChange}
-                      onChange={(date) => setSelectedDate(date)}
+                      // onChange={(date) => setSelectedDate(date)}
                       selected={selectedDate}
                       dateFormat="yyyy/MM/dd"
                       isClearable

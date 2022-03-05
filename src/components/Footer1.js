@@ -13,20 +13,21 @@ const Footer = () => {
 
 
     const handleSubmit = (e) => {
-        const token = localStorage.getItem("token");
-        const user = jwt(token);
-        const user_id = user.id
+        // const token = localStorage.getItem("token");
+        // const user = jwt(token);
+        // const user_id = user.id
         e.preventDefault();
         axios.post('http://127.0.0.1:8000/feedback/', {
-            "user_id": user_id,
             "user_name": FormData['user_name'],
             "feedback": FormData['feedback'],
+            "status":"Hide"
+
 
         }).then(function (response) {
-           // console.log(response);
+        //    console.log(response);
         })
         .catch(function (error) {
-                console.log(error);
+                // console.log(error);
             });
             setFormData(
                 {  user_name: "",
@@ -103,12 +104,12 @@ const Footer = () => {
                         <h6 className="text-white mb-3">Message</h6>
                         <form method='POST' onSubmit={(e)=>handleSubmit(e)}>
                             <div className="input-group ">
-                                <div className="mb-2">
-                                    <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter your name" value={FormData.user_name} name="user_name" onChange={(e) => FormHandeller(e)} />
-                                  
-                                </div>
-                              
                                 <div className="">
+                                    <input type="text" className="form-control mb-2" id="exampleFormControlInput1" placeholder="Enter your name" value={FormData.user_name} name="user_name" onChange={(e) => FormHandeller(e)} />
+                                  
+                                
+                              
+                                
                                     <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" cols="20" placeholder='Leave us message' value={FormData.feedback} name="feedback" onChange={(e) => FormHandeller(e)}></textarea>
                                     <button type='submit' className='btn btn-dark mt-1' >Send</button>
                                 </div>
